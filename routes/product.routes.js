@@ -3,7 +3,7 @@ const router = require('express').Router();
 const auth = require('../auth/user.auth');
 const Product = require('../models/Product.model');
 
-router.get("/", auth, async (req, res) => {
+router.get("/", async (req, res) => {
     try {
         const products = await Product.find();
         res.status(200).json(products);

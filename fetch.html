@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="add-product" onclick="fetchProducts()">fetch product</button>
+    <div class="products">
+
+    </div>
+
+
+<script>
+    const fetchProducts = async () => {
+        const response = await fetch('http://localhost:3000/product/', {
+    method: 'GET',
+    headers: {
+        'Content-Type': 'application/json',
+        'Authorization':"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InZpc2hvb3ZAeWFob28uY29tIiwiaWF0IjoxNzQ1ODYwOTA1LCJleHAiOjE3NDU4NjQ1MDV9.HrfNTg2nSkqcqWC4pBDo6MFCIQQgq21ZsLmgVGkss3E"
+    }
+});
+        const data = await response.json();
+        console.log(data);
+        const productsContainer = document.querySelector('.products');
+        productsContainer.innerHTML = ''; // Clear previous products
+
+        data.forEach(product => {
+            const productDiv = document.createElement('div');
+            productDiv.classList.add('product');
+            productDiv.innerHTML = `
+                <h2>${product.name}</h2>
+                <p>${product.description}</p>
+                <p>Price: $${product.price}</p>
+                <p>Stock: ${product.stock}</p>
+                <p>Category: ${product.category}</p>
+            `;
+            productsContainer.appendChild(productDiv);
+        });
+    }
+</script>
+</body>
+</html>
