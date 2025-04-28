@@ -1,0 +1,11 @@
+
+project initialise node js
+
+express 
+
+user model 
+
+-name, email, password 
+
+
+npm i express nodemon mongoose bcrypt jsonwebtoken
