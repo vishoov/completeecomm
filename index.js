@@ -19,6 +19,8 @@ app.get("/", (req, res) => {
 app.use("/user", require("./routes/user.routes"));
 app.use("/product", require("./routes/product.routes"));
 app.use("/cart", require("./routes/cart.routes"));
+app.use("/order", require("./routes/order.routes"));
+app.use("/review", require("./routes/review.routes"));
 
 
 app.listen(3000, () => {

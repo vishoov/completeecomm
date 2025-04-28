@@ -9,3 +9,6 @@ user model
 
 
 npm i express nodemon mongoose bcrypt jsonwebtoken
+
+
+review routes 
